@@ -1,0 +1,11 @@
+.git
+.gitignore
+.vscode
+.idea
+bin/
+obj/
+Dockerfile
+docker-compose.yml
+.dockerignore
+*.db
+*.log

@@ -802,3 +802,46 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/rider,dotnetcore,aspnetcore,python,react,visualstudio,dotenv
+# Dados sensíveis
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.Local.json
+appsettings.Docker.json
+appsettings.Override.json
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+
+# Docker
+docker-compose.override.yml
+docker-compose.prod.yml
+
+# Databases
+*.db
+*.mdf
+*.ldf
+*.sdf
+/data/
+/database/
+/postgres-data/
+/mongo-data/
+
+# Logs
+*.log
+logs/
+Logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# NuGet
+.nuget/
+NuGet.Config

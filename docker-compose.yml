@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: trackingcompanies-db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - ${POSTGRES_DATA_PATH:-./postgres-data}:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - trackingcompanies-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: trackingcompanies-api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
+      ASPNETCORE_URLS: http://+:${API_PORT:-8080}
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=${DB_PORT:-5432};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD};"
+    ports:
+      - "${API_PORT:-8080}:${API_PORT:-8080}"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - trackingcompanies-network
+
+networks:
+  trackingcompanies-network:
+    driver: bridge
