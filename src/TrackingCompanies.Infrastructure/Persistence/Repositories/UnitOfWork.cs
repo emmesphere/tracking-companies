@@ -5,6 +5,8 @@ public class UnitOfWork : IUnitOfWork
 {
     public ICompanyRepository Companies { get; }
     public IIndustrySectorRepository IndustrySectors { get; }
+    public IIndexTypeRepository IndexTypes { get; }
+    
     private readonly AppDbContext _context;
     private bool _disposed = false;
 
@@ -13,6 +15,7 @@ public class UnitOfWork : IUnitOfWork
         _context = context;
         Companies = new CompanyRepository(_context);
         IndustrySectors = new IndustrySectorRepository(_context);
+        IndexTypes = new IndexTypeRepository(_context);
     }
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {

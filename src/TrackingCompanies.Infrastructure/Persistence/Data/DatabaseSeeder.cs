@@ -73,4 +73,14 @@ public class DatabaseSeeder : IDatabaseSeeder
 
         await _context.Companies.AddRangeAsync(companies);
     }
+
+    private async Task SeedIndexesAsync()
+    {
+        if (await _context.IndexTypes.AnyAsync()) return;
+
+        var indexes = new[]{
+            IndexType.CreateIndex("","", 0m)
+        };
+        await _context.IndexTypes.AddRangeAsync(indexes);
+    }
 }

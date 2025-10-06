@@ -7,7 +7,6 @@ namespace TrackingCompanies.Infrastructure.Persistence.Repositories;
 public class CompanyRepository(AppDbContext context) : ICompanyRepository
 {
     private readonly AppDbContext _context = context;
-
     public async Task<Company?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await _context.Companies

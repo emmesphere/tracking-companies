@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TrackingCompanies.Domain.Entities;
-using TrackingCompanies.Domain.ValueObject;
 
 namespace TrackingCompanies.Infrastructure.Persistence;
 
@@ -8,6 +7,7 @@ public class AppDbContext : DbContext
 {
     public DbSet<Company> Companies => Set<Company>();
     public DbSet<IndustrySector> IndustrySectors => Set<IndustrySector>();
+    public DbSet<IndexType> IndexTypes => Set<IndexType>();
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 

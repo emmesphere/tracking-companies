@@ -4,11 +4,7 @@ namespace TrackingCompanies.Domain.Entities;
 
 public class IndustrySector : AggregateRoot<int>
 {
-    
-    private IndustrySector()
-    {
-        
-    }
+    private IndustrySector() { }
 
     private IndustrySector(int id, string name, string description) : base(id)
     {
