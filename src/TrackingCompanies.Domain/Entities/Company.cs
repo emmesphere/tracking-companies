@@ -8,6 +8,7 @@ public class Company : AggregateRoot<Guid>
     public Ticker Ticker { get; private set; }
     public string Name { get; private set; }
     public int IndustrySectorId { get; private set; }
+    
     public virtual IndustrySector IndustrySector { get; private set; }
     
     private Company() { }
