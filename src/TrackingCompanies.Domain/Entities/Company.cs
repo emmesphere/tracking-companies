@@ -37,3 +37,20 @@ public class Company : AggregateRoot<Guid>
         IndustrySectorId = sectorId;
     }
 }
+
+public class IncomeStatement : AggregateRoot<Guid>
+{
+    public Guid CompanyId { get; private set; }
+    public virtual Company Company { get; set; }
+    public decimal? NetProfit { get; set; }
+    public decimal? NetIncome { get; set; }
+    public decimal? NetWorth { get; set; }
+    public decimal? NetDebit { get; set; }
+    public decimal? StockPrice { get; set; }
+    public decimal? DividendsPerShare { get; set; }
+    public decimal? NumberOfShares { get; set; }
+    public decimal? ROIC { get; set; }
+    public decimal? WACC { get; set; }
+    public DateTime CreatedAt { get; } = DateTime.Today;
+    
+}
