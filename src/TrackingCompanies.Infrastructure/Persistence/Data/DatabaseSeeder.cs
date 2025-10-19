@@ -83,7 +83,7 @@ public class DatabaseSeeder : IDatabaseSeeder
         var indexes = new[]{
             IndexType.CreateIndex("Margem Líquida",
                 "Lucro Líquido ÷ Receita Líquida. Indica quanto a empresa efetivamente transforma em lucro. "
-                , 0m,
+                , 0.10m,
                 IndexGroup.Profitability),
             IndexType.CreateIndex("Margem Operacional",
             "EBIT / Receita Líquida. Avalia a eficiência do negócio antes de impostos e juros."
@@ -91,15 +91,15 @@ public class DatabaseSeeder : IDatabaseSeeder
             IndexGroup.Profitability),
             IndexType.CreateIndex("ROE (Return on Equity)",
                 "Lucro Líquido ÷ Patrimônio Líquido. Mede a rentabilidade do capital próprio dos acionistas."
-                , 0m,
+                , 0.12m,
                 IndexGroup.Profitability),
             IndexType.CreateIndex("ROA (Return on Assets)",
                 "Lucro Líquido ÷ Ativos Totais. Mede a eficiência da empresa em gerar lucro com os ativos."
-                , 0m,
+                , 0.5m,
                 IndexGroup.Profitability),
             IndexType.CreateIndex("Giro do Ativo",
                 "Receita Líquida ÷ Ativo Total. Mede se os ativos estão a ser usados de forma produtiva."
-                , 0m,
+                , 1m,
                 IndexGroup.Efficiency),
             IndexType.CreateIndex("Ciclo Financeiro",
                 "(prazo médio de recebimento + prazo médio de estocagem – prazo médio de pagamento). Avalia a eficiência no capital de giro."
@@ -107,15 +107,15 @@ public class DatabaseSeeder : IDatabaseSeeder
                 IndexGroup.Efficiency),
             IndexType.CreateIndex("EBITDA / Receita.",
                 "Indica a geração de caixa operacional em relação às vendas."
-                , 0m,
+                , 0.10m,
                 IndexGroup.Efficiency),
             IndexType.CreateIndex("Dívida Líquida / EBITDA",
                 "Quantos anos de geração operacional seriam necessários para pagar a dívida líquida."
-                , 0m,
+                , 1m,
                 IndexGroup.Debit),
             IndexType.CreateIndex("Dívida Bruta / Patrimônio Líquido (Alavancagem)",
                 "Mostra a proporção da dívida em relação ao capital próprio."
-                , 0m,
+                , 1m,
                 IndexGroup.Debit),
             IndexType.CreateIndex("Cobertura de Juros",
                 "EBIT ÷ Despesa Financeira. Mede a capacidade de pagar os encargos da dívida."
@@ -124,15 +124,15 @@ public class DatabaseSeeder : IDatabaseSeeder
             
             IndexType.CreateIndex("P/L (Preço sobre Lucro)",
                 "Preço da Ação ÷ Lucro por Ação. Indica quantos anos o investidor levaria para recuperar o investimento via lucros, mantendo-se constantes."
-                , 0m,
+                , 10m,
                 IndexGroup.MarketValue),
             IndexType.CreateIndex("P/VP (Preço sobre Valor Patrimonial)",
                 "Preço da Ação ÷ Patrimônio Líquido por Ação. Mede se a ação está cara ou barata em relação ao valor contábil."
-                , 0m,
+                , 1.5m,
                 IndexGroup.MarketValue),
             IndexType.CreateIndex("Dividend Yield",
                 "Dividendos ÷ Preço da Ação. Mostra a remuneração do acionista em dividendos."
-                , 0m,
+                , 0.5m,
                 IndexGroup.MarketValue),
             IndexType.CreateIndex("EV/EBITDA",
                 "(Enterprise Value sobre EBITDA). Avalia o valor da empresa em relação à sua geração operacional de caixa."
@@ -140,7 +140,7 @@ public class DatabaseSeeder : IDatabaseSeeder
                 IndexGroup.MarketValue),
             IndexType.CreateIndex("PEG Ratio",
                 "(P/L ÷ Crescimento do Lucro). Ajusta o P/L pela taxa de crescimento esperada dos lucros."
-                , 0m,
+                , 6m,
                 IndexGroup.MarketValue),
         };
         await _context.IndexTypes.AddRangeAsync(indexes);
